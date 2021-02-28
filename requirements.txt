@@ -1,0 +1,5 @@
+pyTelegramBotAPI
+pyowm
+aiohttp
+websockets
+chardet
