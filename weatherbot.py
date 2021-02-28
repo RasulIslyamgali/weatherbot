@@ -16,15 +16,15 @@ bot = telebot.TeleBot('1636422665:AAFBrkQpE-jvMR4Mcz6DsVnY3tfVQS7zlfw')
 
 @bot.message_handler(content_types=['text'])
 def send_echo(message):
-while True:
-	try:
+#while True:
+	#try:
         observation = mgr.weather_at_place(message.text)
         w = observation.weather
 	#bot.reply_to(message, message.text)
-	break
+	#break
 	
-	except NotFoundError:
-		answer = 'Город не найден'
+	#except NotFoundError:
+		#answer = 'Город не найден'
 
 
         temp = w.temperature('celsius')["temp"]
