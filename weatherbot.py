@@ -17,33 +17,36 @@ bot = telebot.TeleBot('1636422665:AAFBrkQpE-jvMR4Mcz6DsVnY3tfVQS7zlfw')
 @bot.message_handler(content_types=['text'])
 def send_echo(message):
 #while True:
-	#try:
-        observation = mgr.weather_at_place(message.text)
-        w = observation.weather
-	#bot.reply_to(message, message.text)
-	#break
-	
-	#except NotFoundError:
-		#answer = 'Город не найден'
+	try:
+		observation = mgr.weather_at_place(message.text)
+		w = observation.weather
+		#bot.reply_to(message, message.text)
+		#break
+
+		#except NotFoundError:
+			#answer = 'Город не найден'
 
 
-        temp = w.temperature('celsius')["temp"]
+		temp = w.temperature('celsius')["temp"]
 
-        answer = 'В городе ' + message.text + ' сейчас ' + w.detailed_status + '\n'
-        answer += 'Температура сейчас в районе ' + str(temp) + '\n\n'
+		answer = 'В городе ' + message.text + ' сейчас ' + w.detailed_status + '\n'
+		answer += 'Температура сейчас в районе ' + str(temp) + '\n\n'
 
-        if temp < -10:
-            answer += 'Одевайтесь как мамонт'
-        elif temp < 0:
-            answer += 'Одевайтесь тепло'
-        elif temp < 10:
-            answer += 'Одевайтесь по теплее'
-        elif temp < 20:
-            answer += 'Не забудьте одеть свитер'
-        elif temp > 20:
-            answer += 'Советую выйти на улицу налегке'
-        
-        bot.send_message(message.chat.id, answer)
+		if temp < -10:
+		    answer += 'Одевайтесь как мамонт'
+		elif temp < 0:
+		    answer += 'Одевайтесь тепло'
+		elif temp < 10:
+		    answer += 'Одевайтесь по теплее'
+		elif temp < 20:
+		    answer += 'Не забудьте одеть свитер'
+		elif temp > 20:
+		    answer += 'Советую выйти на улицу налегке'
+
+		bot.send_message(message.chat.id, answer)
+	except:
+		answer = 'Город указан неправильно'
+		bot.send_message(message.chat.id, answer)
 
         
 	
